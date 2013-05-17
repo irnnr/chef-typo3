@@ -3,7 +3,7 @@
 An Opscode Chef cookbook to set up TYPO3.
 
 ## Usage
----
+
 ### typo3::default
 
 Installs TYPO3 in a given version. However, does not configure the installation (yet). The install tool will be enabled after the recipe finished and you need to configure TYPO3 yourself.
@@ -15,7 +15,6 @@ The TYPO3 source is downloaded as a package from <http://get.typo3.org> and put 
 Make sure to configure the `['typo3']['site_name']` attribute as it is used when configuring the Apache virtual host. The installation will live in `/var/www/site-['typo3']['site_name']`.
 
 ## Requirements
----
 
 ### Platform
 
@@ -35,7 +34,6 @@ Tested with Chef 10.14.2
 
 
 ## Attributes
----
 
 #### typo3::default
 <table>
@@ -91,7 +89,7 @@ Tested with Chef 10.14.2
 
 
 ## Contributing
----
+
 1. Fork the repository on Github
 2. Create a named feature branch (like `feature_x`)
 3. Write your change
@@ -100,7 +98,7 @@ Tested with Chef 10.14.2
 6. Submit a Pull Request using Github
 
 ## License and Authors
----
+
 Authors: [Ingo Renner](http://github.com/ingorenner) [(@irnnr)](http://twitter.com/irnnr)
 
 Copyright: 2013, Ingo Renner
