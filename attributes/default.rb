@@ -21,7 +21,6 @@
 # General settings
 default['typo3']['version'] = "6.1.0" # master, 6.0, 6.0.4
 #default['typo3']['package'] = "introduction" # bootstrap, government, dummy, blank
-#default['typo3']['dir'] = "/var/www" # determined automatically depending on version, put in /usr/src/typo3
 default['typo3']['db']['database'] = "typo3db"
 default['typo3']['db']['user'] = "typo3user"
 default['typo3']['db']['password'] = "typo3password"
