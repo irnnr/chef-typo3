@@ -4,3 +4,5 @@
 * require, set up graphicsmagick
 * configure LocalConfiguration.php to use the database, gm
 * Support introduction, government packages
+* Include mailcatcher support http://mailcatcher.me (maybe rather do that in Vagrant)
+* have roles for dev / production environment
