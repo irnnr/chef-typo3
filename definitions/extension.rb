@@ -22,6 +22,7 @@
 
 # ideas allow installation from TER (default) or git
 # use EXT:coreapi?
+# allow loading extensions from a git address
 
 # @see http://docs.opscode.com/chef/essentials_cookbook_definitions.html
 
