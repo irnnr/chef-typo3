@@ -28,6 +28,11 @@ include_recipe "php::module_gd"
 include_recipe "apache2::mod_php5"
 
 
+
+
+site_docroot = "/var/www/site-#{node['typo3']['site_name']}"
+typo3_source_directory = "#{site_docroot}/typo3_src-#{node['typo3']['version']}"
+
 # define mysql connection parameters
 mysql_connection_info = {
   :host     => "localhost", 
@@ -54,22 +59,20 @@ end
 
 
 # download TYPO3 source
-typo3_source_directory = "/usr/src/typo3_src-#{node['typo3']['version']}"
-
 unless File.directory? typo3_source_directory 
   execute "Download TYPO3 source" do
-    cwd "/usr/src"
+    cwd "#{site_docroot}"
     command "wget http://get.typo3.org/#{node['typo3']['version']} -O typo3.tgz"
   end
 
   execute "Unpack TYPO3 source" do
-    cwd "/usr/src"
+    cwd "#{site_docroot}"
     command "tar -xzf typo3.tgz"
     creates "#{typo3_source_directory}/index.php"
   end
 
   execute "Clean up TYPO3 source download" do
-    cwd "/usr/src"
+    cwd "#{site_docroot}"
     command "rm typo3.tgz"
   end
 end
@@ -78,8 +81,6 @@ end
 
 
 # set up TYPO3 directory structure
-site_docroot = "/var/www/site-#{node['typo3']['site_name']}"
-
 directory "#{site_docroot}" do
   owner node['apache']['user']
   group node['apache']['group']
