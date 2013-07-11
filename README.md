@@ -56,6 +56,12 @@ Tested with Chef 10.14.2
     <td><tt>typo3</tt></td>
   </tr>  
   <tr>
+    <td><tt>['typo3']['use_typo3_htaccess']</tt></td>
+    <td>Boolean</td>
+    <td>By default the core's .htaccess file will be used. If you need to do custom modifications, you can turn that behavior off by setting this attribute to false.</td>
+    <td><tt>true</tt></td>
+  </tr>  
+  <tr>
     <td><tt>['typo3']['server_name']</tt></td>
     <td>String</td>
     <td>Server name for the Apache vhost configuration.</td>
