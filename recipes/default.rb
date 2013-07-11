@@ -109,8 +109,10 @@ end
   end
 end
 
-link "#{site_docroot}/.htaccess" do
-  to "#{site_docroot}/typo3_src/_.htaccess"
+if node['typo3']['use_typo3_htaccess']
+  link "#{site_docroot}/.htaccess" do
+    to "#{site_docroot}/typo3_src/_.htaccess"
+  end
 end
 
 # actual directories
