@@ -100,13 +100,18 @@ end
   t3lib
   typo3
   index.php
-  clear.gif
 }.each do |link_target|
   link "#{site_docroot}/#{link_target}" do
     to "#{site_docroot}/typo3_src/#{link_target}"
     owner node['apache']['user']
     group node['apache']['group']
   end
+end
+
+link "#{site_docroot}/clear.gif" do
+  to "#{site_docroot}/typo3_src/typo3/clear.gif"
+  owner node['apache']['user']
+  group node['apache']['group']
 end
 
 if node['typo3']['use_typo3_htaccess']
