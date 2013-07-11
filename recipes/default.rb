@@ -60,7 +60,7 @@ end
 
 # download TYPO3 source
 unless File.directory? typo3_source_directory 
-  execute "Download TYPO3 source" do
+  execute "Download TYPO3 source, version #{node['typo3']['version']}" do
     cwd "#{site_docroot}"
     command "wget http://get.typo3.org/#{node['typo3']['version']} -O typo3.tgz"
   end
