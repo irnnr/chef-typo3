@@ -12,3 +12,5 @@
 * add apc
 * have scheduler recipe also install scheduler ext
 * set devIPmask
+* add xdebug support / set things up for PhpStorm debugging
+
