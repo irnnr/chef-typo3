@@ -58,6 +58,15 @@ end
 
 
 
+# set up TYPO3 directory structure
+directory "#{site_docroot}" do
+  owner node['apache']['user']
+  group node['apache']['group']
+  mode "0755"
+  recursive true
+  action :create
+end
+
 # download TYPO3 source
 unless File.directory? typo3_source_directory 
   execute "Download TYPO3 source, version #{node['typo3']['version']}" do
@@ -79,15 +88,6 @@ end
 
 
 
-
-# set up TYPO3 directory structure
-directory "#{site_docroot}" do
-  owner node['apache']['user']
-  group node['apache']['group']
-  mode "0755"
-  recursive true
-  action :create
-end
 
 # symlink source
 link "#{site_docroot}/typo3_src" do
