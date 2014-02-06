@@ -123,6 +123,7 @@ end
 # actual directories
 %w{
   fileadmin
+  typo3conf
   typo3conf/ext
   typo3temp
   uploads
