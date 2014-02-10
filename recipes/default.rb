@@ -120,7 +120,7 @@ if node['typo3']['use_typo3_htaccess']
   end
 end
 
-# actual directories
+# create actual directories, set permissions
 %w{
   fileadmin
   typo3conf
