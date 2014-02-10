@@ -28,9 +28,9 @@ include_recipe "php::module_gd"
 include_recipe "apache2::mod_php5"
 
 
+# ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
-
-site_docroot = "/var/www/site-#{node['typo3']['site_name']}"
+site_docroot = "#{node['apache']['docroot_dir']}/site-#{node['typo3']['site_name']}"
 typo3_source_directory = "#{site_docroot}/typo3_src-#{node['typo3']['version']}"
 
 # define mysql connection parameters
