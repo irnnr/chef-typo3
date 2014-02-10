@@ -19,8 +19,8 @@
 #
 
 # General settings
-default['typo3']['version'] = "6.1.5" # master, 6.0, 6.0.4
 #default['typo3']['package'] = "introduction" # bootstrap, government, dummy, blank
+default['typo3']['version'] = "6.1.7" # master, 6.0, 6.0.4
 default['typo3']['db']['database'] = "typo3db"
 default['typo3']['db']['user'] = "typo3user"
 default['typo3']['db']['password'] = "typo3password"
