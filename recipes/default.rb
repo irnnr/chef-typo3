@@ -33,27 +33,7 @@ include_recipe "apache2::mod_php5"
 site_docroot = "#{node['apache']['docroot_dir']}/site-#{node['typo3']['site_name']}"
 typo3_source_directory = "#{site_docroot}/typo3_src-#{node['typo3']['version']}"
 
-# define mysql connection parameters
-mysql_connection_info = {
-  :host     => "localhost", 
-  :username => "root", 
-  :password => node['mysql']['server_root_password']
-}
-
-# create the database
-mysql_database node['typo3']['db']['database'] do
-  connection mysql_connection_info
-  action :create
-end
-
-# create database user
-mysql_database_user node['typo3']['db']['user'] do
-  connection mysql_connection_info
-  password node['typo3']['db']['password']
-  database_name node['typo3']['db']['database']
-  privileges [:select,:update,:insert,:create,:alter,:drop,:delete]
-  action :grant
-end
+include_recipe "typo3::_database"
 
 
 
