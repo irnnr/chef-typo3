@@ -50,6 +50,12 @@ Tested with Chef 10.14.2
     <td><tt>6.1.0</tt></td>
   </tr>
   <tr>
+    <td><tt>['typo3']['package']</tt></td>
+    <td>String</td>
+    <td>Which site package to install. Tested with 'introduction' and 'government'.</td>
+    <td><tt>introduction</tt></td>
+  </tr>
+  <tr>
     <td><tt>['typo3']['site_name']</tt></td>
     <td>String</td>
     <td>The site's name. Used for example in determining the folder in /var/www/.</td>
@@ -58,7 +64,7 @@ Tested with Chef 10.14.2
   <tr>
     <td><tt>['typo3']['use_typo3_htaccess']</tt></td>
     <td>Boolean</td>
-    <td>By default the core's .htaccess file will be used. If you need to do custom modifications, you can turn that behavior off by setting this attribute to false.</td>
+    <td>By default the core's .htaccess file will be used. If you need to do custom modifications, you can turn that behavior off by setting this attribute to false. Is ignored when installing a site package.</td>
     <td><tt>true</tt></td>
   </tr>  
   <tr>

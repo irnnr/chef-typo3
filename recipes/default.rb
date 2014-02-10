@@ -35,69 +35,10 @@ typo3_source_directory = "#{site_docroot}/typo3_src-#{node['typo3']['version']}"
 
 include_recipe "typo3::_database"
 
-
-
-
-# set up TYPO3 directory structure
-directory "#{site_docroot}" do
-  owner node['apache']['user']
-  group node['apache']['group']
-  mode "0755"
-  recursive true
-  action :create
-end
-
-# download TYPO3 source
-unless File.directory? typo3_source_directory 
-  execute "Download TYPO3 source, version #{node['typo3']['version']}" do
-    cwd "#{site_docroot}"
-    command "wget http://get.typo3.org/#{node['typo3']['version']} -O typo3.tgz"
-  end
-
-  execute "Unpack TYPO3 source" do
-    cwd "#{site_docroot}"
-    command "tar -xzf typo3.tgz"
-    creates "#{typo3_source_directory}/index.php"
-  end
-
-  execute "Clean up TYPO3 source download" do
-    cwd "#{site_docroot}"
-    command "rm typo3.tgz"
-  end
-end
-
-
-
-
-# symlink source
-link "#{site_docroot}/typo3_src" do
-  to "typo3_src-#{node['typo3']['version']}"
-  owner node['apache']['user']
-  group node['apache']['group']
-end
-
-%w{
-  t3lib
-  typo3
-  index.php
-}.each do |link_target|
-  link "#{site_docroot}/#{link_target}" do
-    to "typo3_src/#{link_target}"
-    owner node['apache']['user']
-    group node['apache']['group']
-  end
-end
-
-link "#{site_docroot}/clear.gif" do
-  to "typo3_src/typo3/clear.gif"
-  owner node['apache']['user']
-  group node['apache']['group']
-end
-
-if node['typo3']['use_typo3_htaccess']
-  link "#{site_docroot}/.htaccess" do
-    to "typo3_src/_.htaccess"
-  end
+if !node['typo3']['package'].empty?
+  include_recipe "typo3::_package"
+else
+  include_recipe "typo3::_source"
 end
 
 # create actual directories, set permissions
