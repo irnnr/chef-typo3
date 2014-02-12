@@ -1,13 +1,24 @@
-* create scheduler backend user
-* transform short TYPO3 version (6.1 => 6.1.0) or read json from get.typo3.org
-* implement definitions for backend users, extensions
-* configure LocalConfiguration.php to use the database, gm
-* Include mailcatcher support http://mailcatcher.me (maybe rather do that in Vagrant)
-* have roles for dev / production environment
-* generate encryption key
-* set upload file size to 10MB
-* increase php exec time to 240s
-* have scheduler recipe also install scheduler ext
-* set devIPmask
-* add xdebug support / set things up for PhpStorm debugging
+General
+	* transform short TYPO3 version (6.1 => 6.1.0) or read json from get.typo3.org
+	* handle TYPO3 6.2
+	* implement definitions for backend users, extensions
+	* Include mailcatcher support http://mailcatcher.me (maybe rather do that in Vagrant)
+	* have roles for dev / production environment
 
+
+LocalConfiguration.php
+	* configure database, gm
+	* set devIPmask
+	* generate encryption key
+
+PHP
+	* set upload file size to 10MB
+	* increase php exec time to 240s
+	* add xdebug support / set things up for PhpStorm debugging
+
+Scheduler
+	* create scheduler backend user
+	* have scheduler recipe also install scheduler ext
+
+Vagrant
+	* set up mail catcher
