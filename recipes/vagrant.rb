@@ -23,7 +23,7 @@
 # Useful when using PhpStorm's remote sync feature with the vagrant user
 group node['apache']['group'] do
   action :modify
-  membders "vagrant"
+  members "vagrant"
   append true
 end
 
