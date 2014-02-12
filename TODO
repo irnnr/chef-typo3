@@ -1,7 +1,6 @@
 * create scheduler backend user
 * transform short TYPO3 version (6.1 => 6.1.0) or read json from get.typo3.org
 * implement definitions for backend users, extensions
-* require, set up graphicsmagick
 * configure LocalConfiguration.php to use the database, gm
 * Include mailcatcher support http://mailcatcher.me (maybe rather do that in Vagrant)
 * have roles for dev / production environment
