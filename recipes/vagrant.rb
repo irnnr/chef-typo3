@@ -18,11 +18,17 @@
 # limitations under the License.
 #
 
-# Add the vagrant user to the Apache group
+# Add the vagrant user to the Apache group and vice versa
 # Useful when using PhpStorm's remote sync feature with the vagrant user
 group node['apache']['group'] do
   action :modify
   members "vagrant"
+  append true
+end
+
+group "vagrant" do
+  action :modify
+  members node['apache']['user']
   append true
 end
 
