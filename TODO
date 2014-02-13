@@ -2,7 +2,6 @@ General
 	* transform short TYPO3 version (6.1 => 6.1.0) or read json from get.typo3.org
 	* handle TYPO3 6.2
 	* implement definitions for backend users, extensions
-	* Include mailcatcher support http://mailcatcher.me (maybe rather do that in Vagrant)
 	* have roles for dev / production environment
 
 LocalConfiguration.php
