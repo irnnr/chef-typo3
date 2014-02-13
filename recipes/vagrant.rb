@@ -18,7 +18,6 @@
 # limitations under the License.
 #
 
-
 # Add the vagrant user to the Apache group
 # Useful when using PhpStorm's remote sync feature with the vagrant user
 group node['apache']['group'] do
