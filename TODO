@@ -20,5 +20,3 @@ Scheduler
 	* create scheduler backend user
 	* have scheduler recipe also install scheduler ext
 
-Vagrant
-	* set up PHP to use MailCatcher

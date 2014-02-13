@@ -49,7 +49,7 @@ service "mailcatcher" do
   action :nothing
 end
 
-template "mailcatcher" do
+template "mailcatcher service" do
   path "/etc/init.d/mailcatcher"
   source "mailcatcher.erb"
   owner "root"
@@ -57,6 +57,15 @@ template "mailcatcher" do
   mode "0755"
   notifies :enable, "service[mailcatcher]"
   notifies :start, "service[mailcatcher]"
+end
+
+template "mailcatcher php" do
+  path "#{node['php']['ext_conf_dir']}/mailcatcher.ini"
+  source "mailcatcher.ini.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  notifies :restart, "service[apache2]"
 end
 
 
