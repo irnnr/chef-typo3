@@ -28,3 +28,35 @@ group node['apache']['group'] do
 end
 
 
+# Install MailCatcher http://mailcatcher.me
+# rquires sqllite headers
+package "sqllite-devel" do 
+  action :install
+  case node['platform_family']
+  when "rhel","centos"
+    package_name "sqlite-devel"
+  when "debian","ubuntu"
+    package_name "libsqlite3-dev"
+  end
+end
+
+gem_package "mailcatcher" do
+  action :install
+end
+
+service "mailcatcher" do
+  supports :start => true, :stop => true, :restart => true
+  action :nothing
+end
+
+template "mailcatcher" do
+  path "/etc/init.d/mailcatcher"
+  source "mailcatcher.erb"
+  owner "root"
+  group "root"
+  mode "0755"
+  notifies :enable, "service[mailcatcher]"
+  notifies :start, "service[mailcatcher]"
+end
+
+

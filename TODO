@@ -21,4 +21,4 @@ Scheduler
 	* have scheduler recipe also install scheduler ext
 
 Vagrant
-	* set up mail catcher
+	* set up PHP to use MailCatcher
