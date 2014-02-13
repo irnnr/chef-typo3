@@ -5,15 +5,12 @@ General
 	* Include mailcatcher support http://mailcatcher.me (maybe rather do that in Vagrant)
 	* have roles for dev / production environment
 
-
 LocalConfiguration.php
 	* configure database, gm
 	* set devIPmask
 	* generate encryption key
 
 PHP
-	* set upload file size to 10MB
-	* increase php exec time to 240s
 	* add xdebug support / set things up for PhpStorm debugging
 
 Scheduler
