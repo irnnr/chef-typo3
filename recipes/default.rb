@@ -74,7 +74,7 @@ file "/etc/php5/apache2/conf.d/upload_max_filesize.ini" do
     mode "0644"
     action :create
     content "upload_max_filesize = 10M\npost_max_size = 10M\n"
-    notifies :restart, resources(:service => "apache2")
+    notifies :restart, "service[apache2]"
 end
 
 file "/etc/php5/apache2/conf.d/max_execution_time.ini" do
@@ -83,7 +83,7 @@ file "/etc/php5/apache2/conf.d/max_execution_time.ini" do
     mode "0644"
     action :create
     content "max_execution_time = 240\n"
-    notifies :restart, resources(:service => "apache2")
+    notifies :restart, "service[apache2]"
 end
 
 # create TYPO3 site / web app
