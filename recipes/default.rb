@@ -53,7 +53,7 @@ end
   directory "#{site_docroot}/#{directory}" do
     owner node['apache']['user']
     group node['apache']['group']
-    mode "0755"
+    mode "0775"
     recursive true
   end
 end
@@ -62,7 +62,7 @@ end
 file "#{site_docroot}/typo3conf/ENABLE_INSTALL_TOOL" do
   owner node['apache']['user']
   group node['apache']['group']
-  mode "0755"
+  mode "0775"
   action :touch
 end
 
