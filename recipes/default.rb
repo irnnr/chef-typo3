@@ -66,6 +66,26 @@ file "#{site_docroot}/typo3conf/ENABLE_INSTALL_TOOL" do
   action :touch
 end
 
+# set php.ini directives as recommended by Install Tool system check
+# can't use the php cookbook's intended way since it only applies to cli
+file "/etc/php5/apache2/conf.d/upload_max_filesize.ini" do
+    owner "root"
+    group "root"
+    mode "0644"
+    action :create
+    content "upload_max_filesize = 10M\npost_max_size = 10M\n"
+    notifies :restart, resources(:service => "apache2")
+end
+
+file "/etc/php5/apache2/conf.d/max_execution_time.ini" do
+    owner "root"
+    group "root"
+    mode "0644"
+    action :create
+    content "max_execution_time = 240\n"
+    notifies :restart, resources(:service => "apache2")
+end
+
 # create TYPO3 site / web app
 Chef::Log.info "Setting up TYPO3 site \"#{node['typo3']['site_name']}\""
 web_app node['typo3']['site_name'] do 
