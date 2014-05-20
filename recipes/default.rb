@@ -88,7 +88,7 @@ end
 
 # create TYPO3 site / web app
 Chef::Log.info "Setting up TYPO3 site \"#{node['typo3']['site_name']}\""
-web_app node['typo3']['site_name'] do 
+web_app node['typo3']['site_name'] do
   template "typo3-web_app.conf.erb"
   docroot site_docroot
   server_name node['typo3']['server_name']

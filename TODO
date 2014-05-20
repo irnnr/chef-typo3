@@ -15,4 +15,3 @@ PHP
 Scheduler
 	* create scheduler backend user
 	* have scheduler recipe also install scheduler ext
-

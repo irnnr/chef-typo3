@@ -32,7 +32,7 @@ directory "#{site_docroot}" do
 end
 
 # download TYPO3 source
-unless File.directory? typo3_source_directory 
+unless File.directory? typo3_source_directory
   execute "Download TYPO3 source, version #{node['typo3']['version']}" do
     cwd "#{site_docroot}"
     command "wget http://get.typo3.org/#{node['typo3']['version']} -O typo3.tgz"
@@ -79,6 +79,3 @@ if node['typo3']['use_typo3_htaccess']
     to "typo3_src/_.htaccess"
   end
 end
-
-
-
