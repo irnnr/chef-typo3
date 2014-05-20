@@ -36,7 +36,7 @@ typo3_source_directory = "#{site_docroot}/typo3_src-#{node['typo3']['version']}"
 
 include_recipe "typo3::_database"
 
-if !node['typo3']['package'].empty?
+if node['typo3']['package'] != "source"
   include_recipe "typo3::_package"
 else
   include_recipe "typo3::_source"
