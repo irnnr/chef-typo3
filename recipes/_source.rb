@@ -22,6 +22,9 @@
 site_docroot = "#{node['apache']['docroot_dir']}/site-#{node['typo3']['site_name']}"
 typo3_source_directory = "#{site_docroot}/typo3_src-#{node['typo3']['version']}"
 
+typo3_version_major, typo3_version_minor, typo3_version_patch = node['typo3']['version'].split('.')
+typo3_version_patch ||= 0 # In case version was specified w/o patch level, e.g. "6.1" instead of "6.1.0"
+
 # set up TYPO3 directory structure
 directory "#{site_docroot}" do
   owner node['apache']['user']
@@ -56,13 +59,17 @@ link "#{site_docroot}/typo3_src" do
   group node['apache']['group']
 end
 
-%w{
-  t3lib
-  typo3
-  index.php
-}.each do |link_target|
+%w{typo3 index.php}.each do |link_target|
   link "#{site_docroot}/#{link_target}" do
     to "typo3_src/#{link_target}"
+    owner node['apache']['user']
+    group node['apache']['group']
+  end
+end
+
+if typo3_version_major == 4 || (typo3_version_major == 6 && typo3_version_minor < 2)
+  link "#{site_docroot}/t3lib" do
+    to "typo3_src/t3lib"
     owner node['apache']['user']
     group node['apache']['group']
   end
