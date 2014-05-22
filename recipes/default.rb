@@ -33,6 +33,8 @@ include_recipe "typo3::graphicsmagick"
 
 site_docroot = "#{node['apache']['docroot_dir']}/site-#{node['typo3']['site_name']}"
 typo3_source_directory = "#{site_docroot}/typo3_src-#{node['typo3']['version']}"
+typo3_version_major, typo3_version_minor, typo3_version_patch = node['typo3']['version'].split('.')
+typo3_version_patch ||= 0 # In case version was specified w/o patch level, e.g. "6.1" instead of "6.1.0"
 
 include_recipe "typo3::_database"
 
@@ -64,6 +66,16 @@ file "#{site_docroot}/typo3conf/ENABLE_INSTALL_TOOL" do
   group node['apache']['group']
   mode "0775"
   action :touch
+end
+
+# fix permissions
+if typo3_version_major >= 6
+  file "#{site_docroot}/typo3conf/LocalConfiguration.php" do
+    owner node['apache']['user']
+    group node['apache']['group']
+    mode "0664"
+    only_if File.exists? "#{site_docroot}/typo3conf/LocalConfiguration.php"
+  end
 end
 
 # set php.ini directives as recommended by Install Tool system check
