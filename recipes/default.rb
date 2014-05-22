@@ -74,7 +74,7 @@ if typo3_version_major.to_i >= 6
     owner node['apache']['user']
     group node['apache']['group']
     mode "0664"
-    only_if File.exists? "#{site_docroot}/typo3conf/LocalConfiguration.php"
+    only_if { File.exists? "#{site_docroot}/typo3conf/LocalConfiguration.php" }
   end
 end
 
