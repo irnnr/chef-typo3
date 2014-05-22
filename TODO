@@ -8,7 +8,7 @@ General
 	* set propper permissions
 
 LocalConfiguration.php
-	* configure database, gm
+	* configure database, gm, apc for caching
 	* set devIPmask
 	* generate encryption key
   * select configuration preset from Install Tool

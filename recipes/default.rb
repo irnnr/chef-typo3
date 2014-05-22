@@ -98,6 +98,16 @@ file "/etc/php5/apache2/conf.d/max_execution_time.ini" do
     notifies :restart, "service[apache2]"
 end
 
+# set APC memory
+template "apc settings" do
+  path "/etc/php5/conf.d/apc.ini"
+  source "apc.ini.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  notifies :restart, "service[apache2]"
+end
+
 # create TYPO3 site / web app
 Chef::Log.info "Setting up TYPO3 site \"#{node['typo3']['site_name']}\""
 web_app node['typo3']['site_name'] do
