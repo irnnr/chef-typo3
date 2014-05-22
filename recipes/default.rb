@@ -69,7 +69,7 @@ file "#{site_docroot}/typo3conf/ENABLE_INSTALL_TOOL" do
 end
 
 # fix permissions
-if typo3_version_major >= 6
+if typo3_version_major.to_i >= 6
   file "#{site_docroot}/typo3conf/LocalConfiguration.php" do
     owner node['apache']['user']
     group node['apache']['group']
