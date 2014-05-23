@@ -3,7 +3,7 @@
 # Cookbook Name:: typo3
 # Attributes:: default
 #
-# Copyright 2013, Ingo Renner
+# Copyright 2013-2014, Ingo Renner
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
 #
 
 # General settings
-default['typo3']['version'] = "6.1.7" # master, 6.0, 6.0.4
+default['typo3']['version'] = "6.2.3" # master, 6.0, 6.0.4
 default['typo3']['package'] = "introduction" # bootstrap, government, dummy, blank
 default['typo3']['db']['database'] = "typo3db"
 default['typo3']['db']['user'] = "typo3user"
