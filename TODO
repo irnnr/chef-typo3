@@ -1,5 +1,5 @@
 General
-	* transform short TYPO3 version (6.1 => 6.1.0) or read json from get.typo3.org
+	* transform short TYPO3 version (6.1 => 6.1.{latest}), read json from get.typo3.org
 		* example in recipes/_source.rb, should write back to version attribute
 		* should store decomposed version in node attributes
 	* handle TYPO3 6.2
@@ -11,7 +11,7 @@ LocalConfiguration.php
 	* configure database, gm, apc for caching
 	* set devIPmask
 	* generate encryption key
-  * select configuration preset from Install Tool
+	* select configuration preset from Install Tool
 
 PHP
 	* add xdebug support / set things up for PhpStorm debugging
