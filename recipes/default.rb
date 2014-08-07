@@ -31,7 +31,7 @@ include_recipe "typo3::graphicsmagick"
 
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
-site_docroot = "#{node['apache']['docroot_dir']}/site-#{node['typo3']['site_name']}"
+site_docroot = "#{node['apache']['docroot_dir']}/#{node['typo3']['site_name']}"
 typo3_source_directory = "#{site_docroot}/typo3_src-#{node['typo3']['version']}"
 typo3_version_major, typo3_version_minor, typo3_version_patch = node['typo3']['version'].split('.')
 typo3_version_patch ||= 0 # In case version was specified w/o patch level, e.g. "6.1" instead of "6.1.0"

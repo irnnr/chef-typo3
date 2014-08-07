@@ -12,7 +12,7 @@ A database and database user for the TYPO3 installation will be set up.
 
 The TYPO3 source is downloaded as a package from <http://get.typo3.org> and put into `/usr/src`.
 
-Make sure to configure the `['typo3']['site_name']` attribute as it is used when configuring the Apache virtual host. The installation will live in `/var/www/site-['typo3']['site_name']`.
+Make sure to configure the `['typo3']['site_name']` attribute as it is used when configuring the Apache virtual host. The installation will live in `/var/www/['typo3']['site_name']`.
 
 ## Requirements
 

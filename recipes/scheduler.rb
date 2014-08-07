@@ -21,6 +21,6 @@
 # set up a scheduler task for TYPO3 to run every minute
 cron "TYPO3 scheduler" do
   minute '*'
-  command "php /var/www/site-#{node['typo3']['site_name']}/typo3/cli_dispatch.phpsh scheduler"
+  command "php /var/www/#{node['typo3']['site_name']}/typo3/cli_dispatch.phpsh scheduler"
   user node['apache']['user']
 end
