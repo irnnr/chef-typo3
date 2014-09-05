@@ -18,15 +18,15 @@
 # limitations under the License.
 #
 
-include_recipe "apache2"
-include_recipe "mysql::server"
-include_recipe "database::mysql"
-include_recipe "php"
-include_recipe "php::module_mysql"
-include_recipe "php::module_apc"
-include_recipe "php::module_gd"
-include_recipe "apache2::mod_php5"
-include_recipe "typo3::graphicsmagick"
+include_recipe 'apache2'
+include_recipe 'mysql::server'
+include_recipe 'database::mysql'
+include_recipe 'php'
+include_recipe 'php::module_mysql'
+include_recipe 'php::module_apc'
+include_recipe 'php::module_gd'
+include_recipe 'apache2::mod_php5'
+include_recipe 'typo3::graphicsmagick'
 
 
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -36,12 +36,12 @@ typo3_source_directory = "#{site_docroot}/typo3_src-#{node['typo3']['version']}"
 typo3_version_major, typo3_version_minor, typo3_version_patch = node['typo3']['version'].split('.')
 typo3_version_patch ||= 0 # In case version was specified w/o patch level, e.g. "6.1" instead of "6.1.0"
 
-include_recipe "typo3::_database"
+include_recipe 'typo3::_database'
 
-if node['typo3']['package'] != "source"
-  include_recipe "typo3::_package"
+if node['typo3']['package'] != 'source'
+  include_recipe 'typo3::_package'
 else
-  include_recipe "typo3::_source"
+  include_recipe 'typo3::_source'
 end
 
 # create actual directories, set permissions
@@ -55,7 +55,7 @@ end
   directory "#{site_docroot}/#{directory}" do
     owner node['apache']['user']
     group node['apache']['group']
-    mode "0775"
+    mode '0775'
     recursive true
   end
 end
@@ -64,7 +64,7 @@ end
 file "#{site_docroot}/typo3conf/ENABLE_INSTALL_TOOL" do
   owner node['apache']['user']
   group node['apache']['group']
-  mode "0775"
+  mode '0775'
   action :touch
 end
 
@@ -73,45 +73,45 @@ if typo3_version_major.to_i >= 6
   file "#{site_docroot}/typo3conf/LocalConfiguration.php" do
     owner node['apache']['user']
     group node['apache']['group']
-    mode "0664"
+    mode '0664'
     only_if { File.exists? "#{site_docroot}/typo3conf/LocalConfiguration.php" }
   end
 end
 
 # set php.ini directives as recommended by Install Tool system check
 # can't use the php cookbook's intended way since it only applies to cli
-file "/etc/php5/apache2/conf.d/upload_max_filesize.ini" do
-    owner "root"
-    group "root"
-    mode "0644"
+file '/etc/php5/apache2/conf.d/upload_max_filesize.ini' do
+    owner 'root'
+    group 'root'
+    mode '0644'
     action :create
     content "upload_max_filesize = 10M\npost_max_size = 10M\n"
-    notifies :restart, "service[apache2]"
+    notifies :restart, 'service[apache2]'
 end
 
-file "/etc/php5/apache2/conf.d/max_execution_time.ini" do
-    owner "root"
-    group "root"
-    mode "0644"
+file '/etc/php5/apache2/conf.d/max_execution_time.ini' do
+    owner 'root'
+    group 'root'
+    mode '0644'
     action :create
     content "max_execution_time = 240\n"
-    notifies :restart, "service[apache2]"
+    notifies :restart, 'service[apache2]'
 end
 
 # set APC memory
-template "apc settings" do
-  path "/etc/php5/conf.d/apc.ini"
-  source "apc.ini.erb"
-  owner "root"
-  group "root"
-  mode "0644"
-  notifies :restart, "service[apache2]"
+template 'apc settings' do
+  path '/etc/php5/conf.d/apc.ini'
+  source 'apc.ini.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  notifies :restart, 'service[apache2]'
 end
 
 # create TYPO3 site / web app
 Chef::Log.info "Setting up TYPO3 site \"#{node['typo3']['site_name']}\""
 web_app node['typo3']['site_name'] do
-  template "typo3-web_app.conf.erb"
+  template 'typo3-web_app.conf.erb'
   docroot site_docroot
   server_name node['typo3']['server_name']
   server_aliases node['typo3']['server_aliases']
