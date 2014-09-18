@@ -115,4 +115,5 @@ web_app node['typo3']['site_name'] do
   docroot site_docroot
   server_name node['typo3']['server_name']
   server_aliases node['typo3']['server_aliases']
+  application_context node['typo3']['application_context']
 end

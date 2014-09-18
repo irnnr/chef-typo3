@@ -27,7 +27,7 @@ default['typo3']['db']['password'] = "typo3password"
 
 default['typo3']['site_name'] = 'typo3'
 default['typo3']['use_typo3_htaccess'] = true
+default['typo3']['application_context'] = 'Production'
 
 default['typo3']['server_name'] = [node['fqdn']]
 default['typo3']['server_aliases'] = []
-
