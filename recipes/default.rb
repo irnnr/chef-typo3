@@ -80,7 +80,7 @@ end
 
 # set php.ini directives as recommended by Install Tool system check
 # can't use the php cookbook's intended way since it only applies to cli
-file '/etc/php5/apache2/conf.d/upload_max_filesize.ini' do
+file "#{node['php']['conf_dir']}/upload_max_filesize.ini" do
     owner 'root'
     group 'root'
     mode '0644'
@@ -89,7 +89,7 @@ file '/etc/php5/apache2/conf.d/upload_max_filesize.ini' do
     notifies :restart, 'service[apache2]'
 end
 
-file '/etc/php5/apache2/conf.d/max_execution_time.ini' do
+file "#{node['php']['conf_dir']}/max_execution_time.ini" do
     owner 'root'
     group 'root'
     mode '0644'
@@ -100,7 +100,7 @@ end
 
 # set APC memory
 template 'apc settings' do
-  path '/etc/php5/conf.d/apc.ini'
+  path "#{node['php']['conf_dir']}/apc.ini"
   source 'apc.ini.erb'
   owner 'root'
   group 'root'
